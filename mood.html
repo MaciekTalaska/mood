@@ -3,12 +3,30 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1 class="jumbotron" align="center">What is your mood today?</h1>
 
-  {{> hello}}
+  {{> moodsInCircles}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="moodsInCircles">
+  <div class="row">
+    <div class="col-sm-4">
+      <svg height="300" width="300">
+        <circle cx="150" cy="150" r="150" fill="green" />
+        Sorry, your browser does not support inline SVG.  
+      </svg> 
+    </div>
+    <div class="col-sm-4">
+      <svg height="300" width="300">
+        <circle cx="150" cy="150" r="150" fill="yellow" />
+        Sorry, your browser does not support inline SVG.  
+      </svg> 
+    </div>
+    <div class="col-sm-4">
+      <svg height="300" width="300">
+        <circle cx="150" cy="150" r="150" fill="red" />
+        Sorry, your browser does not support inline SVG.  
+      </svg> 
+    </div>
+  </div>
 </template>
