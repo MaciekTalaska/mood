@@ -6,7 +6,13 @@
   <h1 class="jumbotron" align="center">What is your mood today?</h1>
 
   {{> moodsInCircles}}
+  {{> status}}
 </body>
+
+<template name="status">
+  <p>You've pressed the moods {{counter}} times.</p>
+</template>
+
 
 <template name="moodsInCircles">
   <div class="row">
