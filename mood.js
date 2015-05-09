@@ -19,20 +19,31 @@ if (Meteor.isClient) {
     }
   });
 
+  Helpers = {
+    incrementSessionKey: function(key) {
+      Session.set(key, Session.get(key) +1);
+    }
+  }
+  
+  var externalFunction = function(mood) {
+      Session.set('green', Session.get('green') +1);
+  };
+  
   Template.moodsInCircles.events( {
     'click circle': function(e) {
       var moodType = e.target.id;
+      
       if (moodType === "moodGreen") {
-        Session.set('green', Session.get('green') +1);
+        Helpers.incrementSessionKey("green");
       }
       if (moodType === "moodYellow") {
-        Session.set('yellow', Session.get('yellow') +1);
+        Helpers.incrementSessionKey("yellow");
       }
       if (moodType === "moodOrange") {
-        Session.set('orange', Session.get('orange') +1);
+        Helpers.incrementSessionKey("orange");
       }
       if (moodType === "moodRed") {
-        Session.set('red', Session.get('red') +1);
+        Helpers.incrementSessionKey("red");
       }
   }
   });
