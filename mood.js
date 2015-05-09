@@ -1,11 +1,15 @@
 if (Meteor.isClient) {
   Session.setDefault('red', 0);
+  Session.setDefault('orange', 0)
   Session.setDefault('yellow', 0);
   Session.setDefault('green', 0);
 
   Template.status.helpers({
     red: function() {
       return Session.get('red');
+    },
+    orange: function() {
+      return Session.get('orange');
     },
     yellow: function() {
       return Session.get('yellow');
@@ -23,6 +27,9 @@ if (Meteor.isClient) {
       }
       if (moodType === "moodYellow") {
         Session.set('yellow', Session.get('yellow') +1);
+      }
+      if (moodType === "moodOrange") {
+        Session.set('orange', Session.get('orange') +1);
       }
       if (moodType === "moodRed") {
         Session.set('red', Session.get('red') +1);
