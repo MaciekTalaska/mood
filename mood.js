@@ -22,6 +22,7 @@ if (Meteor.isClient) {
   Helpers = {
     incrementSessionKey: function(key) {
       Session.set(key, Session.get(key) +1);
+      sAlert.success('Thanks for voting!', {timeout: 2000});
     }
   }
   
