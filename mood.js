@@ -25,10 +25,6 @@ if (Meteor.isClient) {
     }
   }
   
-  var externalFunction = function(mood) {
-      Session.set('green', Session.get('green') +1);
-  };
-  
   Template.moodsInCircles.events( {
     'click circle': function(e) {
       var moodType = e.target.id;
@@ -37,19 +33,6 @@ if (Meteor.isClient) {
           return;
       }
       Helpers.incrementSessionKey(moodType);
-      /*
-      if (moodType === "moodGreen") {
-        Helpers.incrementSessionKey("green");
-      }
-      if (moodType === "moodYellow") {
-        Helpers.incrementSessionKey("yellow");
-      }
-      if (moodType === "moodOrange") {
-        Helpers.incrementSessionKey("orange");
-      }
-      if (moodType === "moodRed") {
-        Helpers.incrementSessionKey("red");
-      }*/
   }
   });
 }
