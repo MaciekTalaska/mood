@@ -1,21 +1,21 @@
 if (Meteor.isClient) {
-  Session.setDefault('red', 0);
-  Session.setDefault('orange', 0)
-  Session.setDefault('yellow', 0);
-  Session.setDefault('green', 0);
+  Session.setDefault('moodRed', 0);
+  Session.setDefault('moodOrange', 0)
+  Session.setDefault('moodYellow', 0);
+  Session.setDefault('moodGreen', 0);
 
   Template.status.helpers({
     red: function() {
-      return Session.get('red');
+      return Session.get('moodRed');
     },
     orange: function() {
-      return Session.get('orange');
+      return Session.get('moodOrange');
     },
     yellow: function() {
-      return Session.get('yellow');
+      return Session.get('moodYellow');
     },
     green: function() {
-      return Session.get('green');
+      return Session.get('moodGreen');
     }
   });
 
@@ -32,7 +32,12 @@ if (Meteor.isClient) {
   Template.moodsInCircles.events( {
     'click circle': function(e) {
       var moodType = e.target.id;
-      
+
+      if (moodType === null || !moodType.startsWith("mood")) {
+          return;
+      }
+      Helpers.incrementSessionKey(moodType);
+      /*
       if (moodType === "moodGreen") {
         Helpers.incrementSessionKey("green");
       }
@@ -44,7 +49,7 @@ if (Meteor.isClient) {
       }
       if (moodType === "moodRed") {
         Helpers.incrementSessionKey("red");
-      }
+      }*/
   }
   });
 }
