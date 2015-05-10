@@ -1,13 +1,32 @@
-Helpers = {
+moodsHelpers = {
   getRandomEffect : function() {
     var notifications = ['scale', 'slide', 'genie', 'jelly', 'flip', 'bouncyflip', 'stackslide'];
     var number = Math.floor(Math.random()*7+1);
     return notifications[number];
   },
+  notifyMoodInsertion : function() {
+    var effectName = moodsHelpers.getRandomEffect();
+    sAlert.success('Thanks for voting!', {timeout: 2000, position: 'bottom-right', effect: effectName});
+  },
   incrementSessionKey: function(key) {
     Session.set(key, Session.get(key) +1);
-    var effectName = this.getRandomEffect();
-    sAlert.success('Thanks for voting!', {timeout: 2000, position: 'bottom-right', effect: effectName});
+    //moodsHelpers.notifyMoodInsertion();
+  },
+  storeMood: function(key) {
+    var date = new Date();
+    var mood = { 
+      mood: key,
+      date: date,
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDate()
+      };
+    Moods.insert(mood);
+  },
+  processMood: function(key) {
+    moodsHelpers.incrementSessionKey(key);
+    moodsHelpers.storeMood(key);
+    moodsHelpers.notifyMoodInsertion();
   }
 }
   
@@ -18,6 +37,6 @@ Template.moodsInCircles.events( {
     if (moodType === null || !moodType.startsWith("mood")) {
       return;
     }
-    Helpers.incrementSessionKey(moodType);
+    moodsHelpers.processMood(moodType);
   }
 });

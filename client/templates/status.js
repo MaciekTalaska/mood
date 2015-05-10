@@ -1,14 +1,14 @@
 Template.status.helpers({
   red: function() {
-    return Session.get('moodRed');
+    return Moods.find({mood:"moodRed"}).count();
   },
   orange: function() {
-    return Session.get('moodOrange');
+    return Moods.find({mood:"moodOrange"}).count();
   },
   yellow: function() {
-    return Session.get('moodYellow');
+    return Moods.find({mood:"moodYellow"}).count();
   },
   green: function() {
-    return Session.get('moodGreen');
+    return Moods.find({mood:"moodGreen"}).count();
   }
 });
