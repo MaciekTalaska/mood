@@ -8,10 +8,6 @@ moodsHelpers = {
     var effectName = moodsHelpers.getRandomEffect();
     sAlert.success('Thanks for voting!', {timeout: 2000, position: 'bottom-right', effect: effectName});
   },
-  incrementSessionKey: function(key) {
-    Session.set(key, Session.get(key) +1);
-    //moodsHelpers.notifyMoodInsertion();
-  },
   storeMood: function(key) {
     var date = new Date();
     var mood = { 
@@ -24,7 +20,6 @@ moodsHelpers = {
     Moods.insert(mood);
   },
   processMood: function(key) {
-    moodsHelpers.incrementSessionKey(key);
     moodsHelpers.storeMood(key);
     moodsHelpers.notifyMoodInsertion();
   }
