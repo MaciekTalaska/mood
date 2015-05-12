@@ -1,4 +1,4 @@
-<template name="moodsInCircles">
+<template name="moodsInCircles_old">
   <div class="row">
     <div class="col-sm-3" align="center">
       <svg height="300" width="300">
@@ -25,4 +25,22 @@
       </svg> 
     </div>
   </div>
+</template>
+
+<template name="moodsInCircles">
+  <div class="row">
+    {{> mood fillValue="green" idValue="moodGreen"}}
+    {{> mood fillValue="yellow" idValue="moodYellow"}}
+    {{> mood fillValue="orange" idValue="moodOrange"}}
+    {{> mood fillValue="red" idValue="moodRed"}}
+  </div>
+</template>
+
+  <template name="mood">
+    <div class="col-sm-3" align="center">
+      <svg height="300" width="300">
+        <circle cx="150" cy="150" r="150" fill={{fillValue}} id={{idValue}} />
+        Sorry, your browser does not support inline SVG.  
+      </svg> 
+    </div>
 </template>
